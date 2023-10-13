@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Collapsed Navbar</title>
+    <!-- Include Bootstrap CSS and JavaScript -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <style>
+        .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 0;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+    </style>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Your Logo</a>
+            <!-- Navbar Toggler Button for Small Screens -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <h1>Your Page Content</h1>
+        <p>...</p>
+    </div>
+
+
+
+    <h1>
+        dropdown
+    </h1>
+    <div class="navbar">
+        <a href="#">Home</a>
+        <div class="dropdown">
+            <button class="dropdown-toggle">Dropdown</button>
+            <ul class="dropdown-menu">
+                <!-- Dynamic dropdown items will be added here -->
+            </ul>
+        </div>
+    </div>
+<script>
+    function populateDropdown() {
+    // Sample data source (you can replace this with your data)
+    const dynamicItems = [
+        { text: 'Item 1', link: '#item1' },
+        { text: 'Item 2', link: '#item2' },
+        { text: 'Item 3', link: '#item3' }
+    ];
+
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    // Clear existing items
+    dropdownMenu.innerHTML = '';
+
+    // Add dynamic items to the dropdown
+    dynamicItems.forEach(item => {
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+        link.textContent = item.text;
+        link.href = item.link;
+        listItem.appendChild(link);
+        dropdownMenu.appendChild(listItem);
+    });
+}
+window.addEventListener('load', populateDropdown);
+
+// Or trigger it based on a user action, e.g., when a button is clicked
+const triggerButton = document.querySelector('.dropdown-toggle');
+triggerButton.addEventListener('click', populateDropdown);
+
+</script>    
+</body>
+</html>
